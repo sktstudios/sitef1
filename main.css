@@ -46,7 +46,7 @@ tr:nth-child(even) {
         display: block;
         text-align: right;
         background-color: #f2f2f2;
-        font-size: 10px;
+        font-size: 8px;
     }
     td:before {
         content: attr(data-label);
