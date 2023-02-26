@@ -21,6 +21,9 @@ th, td {
     font-family: "Formula1 Display-Regular";
     font-size: 13px;
 }
+td:before {
+    font-size: 13px; 
+}
 th {
     background-color: #E10600;
     color: white;
