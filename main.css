@@ -1,0 +1,60 @@
+@font-face {
+    font-family: "F1 Torque";
+    src: url(Formula1-Bold.otf);
+}
+@font-face {
+    font-family: "Formula1 Display-Regular";
+    src: url(Formula1-Regular.otf);
+}
+h1{
+    font-family: "F1 Torque";
+    font-size: 25px;
+}
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 3px solid #ddd;
+    font-family: "Formula1 Display-Regular";
+    font-size: 13px;
+}
+th {
+    background-color: #E10600;
+    color: white;
+}
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+@media (max-width: 991px) {
+    h1 {
+        text-align: center;
+        background-color: #E10600;
+        color: white;
+        border-radius: 6px;
+    }
+    th{
+        display: none;
+    }
+    tr {
+        display: block;
+        margin-bottom: 40px;
+    }
+    td {
+        display: block;
+        text-align: right;
+        font-size: 8px;
+        background-color: #f2f2f2;
+    }
+    td:before {
+        content: attr(data-label);
+        float: left;
+        font-family: "F1 Torque";
+        font-size: 25px;
+    }
+    td:nth-child(even) {
+        background-color: white;
+    }
+}
