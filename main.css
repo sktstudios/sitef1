@@ -46,7 +46,7 @@ tr:nth-child(even) {
         display: block;
         text-align: right;
         background-color: #f2f2f2;
-        font-size: 14px;
+        font-size: 10px;
     }
     td:before {
         display: block
