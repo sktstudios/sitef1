@@ -45,14 +45,12 @@ tr:nth-child(even) {
     td {
         display: block;
         text-align: right;
-        font-size: 10px;
         background-color: #f2f2f2;
     }
     td:before {
         content: attr(data-label);
         float: left;
         font-family: "F1 Torque";
-        font-size: 15px;
     }
     td:nth-child(even) {
         background-color: white;
