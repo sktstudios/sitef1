@@ -21,9 +21,6 @@ th, td {
     font-family: "Formula1 Display-Regular";
     font-size: 13px;
 }
-td:before {
-    font-size: 13px; 
-}
 th {
     background-color: #E10600;
     color: white;
@@ -49,13 +46,14 @@ tr:nth-child(even) {
         display: block;
         text-align: right;
         background-color: #f2f2f2;
-        font-size: 12px;
+        font-size: 14px;
     }
     td:before {
+        display: block
         content: attr(data-label);
         float: left;
         font-family: "F1 Torque";
-        font-size: 15px;
+        font-size: 18px;
     }
     td:nth-child(even) {
         background-color: white;
