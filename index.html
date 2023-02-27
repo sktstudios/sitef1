@@ -3,31 +3,50 @@
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="main.css">
-    <title>Résultats de la saison de Formule 1 2022</title>
+    <title>Formula 1 Resultsn</title>
 </head>
 <body>
-<h1>Résultats de la saison de Formule 1 2022</h1>
-<div id="result"></div>
+    <ul class="ulu">
+        <a href="index.html" class="rien">
+            <h1>Formula 1 Results</h1>
+        </a>
+        <div class="menu">
+            <li>
+                <form id="search-form">
+                    <label for="search-input">Search by years, drivers, or circuits</label>
+                    <input type="text" id="search-input" name="search" min="1950" max="2023" required>
+                    <button type="submit">Search</button>
+                </form>
+            </li>
+        </div>
+    </ul>
+    <div id="particles-js"></div>
+    <script src="particles.js"></script>
+    <script src="app.js"></script>
+    <script>
+        // Récupérer le champ de recherche
+        const searchInput = document.getElementById('search-input');
 
-<script>
-    // Mettre ici le code JavaScript pour récupérer les données de l'API Ergast et les afficher dans une table HTML
-    const url = "https://ergast.com/api/f1/2022/results/1.json"; // URL de l'API
-    const xhr = new XMLHttpRequest(); // Crée une instance de l'objet XMLHttpRequest
-    xhr.open("GET", url); // Configure la requête GET
-    xhr.onload = () => { // Définit la fonction à exécuter lorsque la réponse est récupérée
-        const data = JSON.parse(xhr.response); // Parse la réponse JSON
-        const races = data.MRData.RaceTable.Races; // Récupère toutes les courses
-        let tableHtml = "<table>"; // Débute la construction de la table HTML
-        tableHtml += "<tr><th style='border-top-left-radius: 10px'>Round</th><th>Grand Prix</th><th>Circuit</th><th>Date</th><th style='border-top-right-radius: 10px'>Winner</th></tr>"; // Ajoute la ligne d'en-tête
-        for (const race of races) { // Parcourt toutes les courses
-            tableHtml += `<tr><td data-label="Round">${race.round}</td><td data-label="Grand Prix">${race.raceName}</td><td data-label="Circuit">${race.Circuit.circuitName}</td><td data-label="Date">${race.date}</td><td data-label="Winner">${race.Results[0].Driver.familyName}</td></tr>`; // Ajoute une ligne pour chaque course
-        }
-        tableHtml += "</table>"; // Termine la construction de la table HTML
-        // Ajoute la table dans la page HTML
-        document.getElementById("result").innerHTML = tableHtml;
-    };
-    xhr.send(); // Envoie la requête
+        // Ajouter un événement lorsque le formulaire est soumis
+        document.getElementById('search-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Empêcher le rechargement de la page
 
-</script>
+            // Récupérer la valeur du champ de recherche
+            const searchTerm = searchInput.value;
+
+            // Vérifier si la valeur correspond à l'un des fichiers HTML
+            if (searchTerm === '2022') {
+                // Afficher la page 2022.html
+                window.location.href = '2022.html';
+            } else if (searchTerm === '2023') {
+                // Afficher la page 2023.html
+                window.location.href = '2023.html';
+            } else {
+                // Afficher un message d'erreur si la valeur ne correspond à aucun fichier HTML
+                alert('Aucun résultat trouvé pour ' + searchTerm);
+            }
+        });
+
+    </script>
 </body>
 </html>

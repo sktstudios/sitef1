@@ -9,11 +9,6 @@
 h1{
     font-family: "F1 Torque";
     font-size: 25px;
-    display: block;
-    text-align: center;
-    float: left;
-    color: #f2f2f2;
-    margin: 10px;
 }
 .ulu {
     overflow: hidden;
@@ -21,7 +16,7 @@ h1{
     background-color: #E10600;
     border-radius: 10px;
 }
-label{
+h2{
     color: #f2f2f2;
     display: block;
     text-align: center;
@@ -33,7 +28,8 @@ label{
 }
 .menu{
     float: right;
-    margin-right: 10px;
+    display: inline-grid;
+    grid-template-columns: 1fr 1fr;/* 1fr 1fr 1fr pour 3ème menu */
 }
 ul {
     padding: 10px;
