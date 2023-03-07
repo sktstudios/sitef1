@@ -76,19 +76,19 @@ tr:nth-child(even) {
         display: block;
         margin-bottom: 40px;
     }
-    th {
+    td {
         display: block;
         text-align: right;
         background-color: #f2f2f2;
         font-size: 8px;
     }
-    th:before {
+    td:before {
         content: attr(data-label);
         float: left;
         font-family: "F1 Torque";
         font-size: 25px;
     }
-    th:nth-child(even) {
+    td:nth-child(even) {
         background-color: white;
     }
 }
