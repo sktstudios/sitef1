@@ -45,7 +45,7 @@ table {
     border-collapse: collapse;
     width: 100%;
 }
-#table-head{
+thead{
     display: none;
 }
 th, td {
