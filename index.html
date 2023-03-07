@@ -42,11 +42,15 @@
         for (let result of results) {
             const row = document.createElement("tr");
             const roundCell = document.createElement("td");
-            roundCell.classList.add("round");
+            roundCell.classList.add("Round");
             const grandPrixCell = document.createElement("td");
+            grandPrixCell.classList.add("Grand Prix");
             const circuitCell = document.createElement("td");
+            circuitCell.classList.add("Circuit");
             const dateCell = document.createElement("td");
+            dateCell.classList.add("Date");
             const podiumCell = document.createElement("td");
+            podiumCell.classList.add("Podium");
 
             roundCell.textContent = result.round;
             grandPrixCell.textContent = result.raceName;
