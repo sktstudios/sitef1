@@ -6,47 +6,82 @@
     <title>Formula 1 Results</title>
 </head>
 <body>
-    <ul class="ulu">
-        <a href="index.html" class="rien">
-            <h1>Formula 1 Results</h1>
-        </a>
-        <div class="menu">
-            <li>
-                <form id="search-form">
-                    <label for="search-input">Search by years, drivers, or circuits</label>
-                    <input type="text" id="search-input" name="search" min="1950" max="2023" required>
-                    <button type="submit">Search</button>
-                </form>
-            </li>
-        </div>
-    </ul>
-    <div id="particles-js"></div>
-    <script src="particles.js"></script>
-    <script src="app.js"></script>
-    <script>
-        // Récupérer le champ de recherche
-        const searchInput = document.getElementById('search-input');
+<ul class="ulu">
+    <a href="index.html" class="rien">
+        <h1>Formula 1 Results</h1>
+    </a>
+    <div class="menu">
+        <li>
+            <label for="search-input">Search by years</label>
+            <input type="number" id="search-input" name="search" min="1950" max="2023" required>
+            <button id="search-button">Search</button>
+        </li>
+    </div>
+</ul>
+<div id="particles-js"></div>
+<script src="particles.js"></script>
+<script src="app.js"></script>
+<table id="results-table">
+    <thead id="table-head">
+    <tr>
+        <th>Round</th>
+        <th>Grand Prix</th>
+        <th>Circuit</th>
+        <th>Date</th>
+        <th>Podium</th>
+    </tr>
+    </thead>
+    <tbody></tbody>
+</table>
 
-        // Ajouter un événement lorsque le formulaire est soumis
-        document.getElementById('search-form').addEventListener('submit', function(event) {
-            event.preventDefault(); // Empêcher le rechargement de la page
+<script>
+    const renderTable = (results) => {
+        const tbody = document.querySelector("#results-table tbody");
+        tbody.innerHTML = ""; // Efface le contenu actuel du corps du tableau
 
-            // Récupérer la valeur du champ de recherche
-            const searchTerm = searchInput.value;
+        for (let result of results) {
+            const row = document.createElement("tr");
+            const roundCell = document.createElement("td");
+            const grandPrixCell = document.createElement("td");
+            const circuitCell = document.createElement("td");
+            const dateCell = document.createElement("td");
+            const podiumCell = document.createElement("td");
 
-            // Vérifier si la valeur correspond à l'un des fichiers HTML
-            if (searchTerm === '2022') {
-                // Afficher la page 2022.html
-                window.location.href = '2022.html';
-            } else if (searchTerm === '2023') {
-                // Afficher la page 2023.html
-                window.location.href = '2023.html';
-            } else {
-                // Afficher un message d'erreur si la valeur ne correspond à aucun fichier HTML
-                alert('Aucun résultat trouvé pour ' + searchTerm);
-            }
+            roundCell.textContent = result.round;
+            grandPrixCell.textContent = result.raceName;
+            circuitCell.textContent = result.Circuit.circuitName;
+            dateCell.textContent = result.date;
+
+            const podiumDrivers = result.Results.slice(0, 3).map(result => result.Driver.familyName);
+            podiumCell.textContent = podiumDrivers.join(" | ");
+
+            row.appendChild(roundCell);
+            row.appendChild(grandPrixCell);
+            row.appendChild(circuitCell);
+            row.appendChild(dateCell);
+            row.appendChild(podiumCell);
+            tbody.appendChild(row);
+
+            document.getElementById("table-head").style.display = "contents";
+        }
+    };
+
+    const searchResults = async (query) => {
+        const response = await fetch(`http://ergast.com/api/f1/${query}/results.json?limit=1000`);
+        const data = await response.json();
+        const allResults = data.MRData.RaceTable.Races;
+        return allResults;
+    };
+
+    const searchButton = document.getElementById("search-button");
+    searchButton.addEventListener("click", () => {
+        const searchInput = document.getElementById("search-input");
+        const query = searchInput.value;
+        searchResults(query).then((results) => {
+            renderTable(results);
         });
-
-    </script>
+    });
+</script>
 </body>
 </html>
+
