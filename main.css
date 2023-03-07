@@ -83,7 +83,7 @@ tr:nth-child(even) {
         font-size: 8px;
     }
     td:before {
-        content: attr(data-label);
+        content: attr(class);
         float: left;
         font-family: "F1 Torque";
         font-size: 25px;
